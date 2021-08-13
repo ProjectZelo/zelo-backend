@@ -1,14 +1,15 @@
+import { CreateCardDto } from './dto/create-card.dto';
 import { PurchaseService } from './purchase.service';
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
 @Controller()
 export class PurchaseController {
-  constructor(private readonly PurchaseService: PurchaseService) {
+  constructor(private readonly purchaseService: PurchaseService) {
 
   }
 
-  @Get('purchase')
-  getHello(): string {
-    return this.PurchaseService.getHello();
+  @Post('card')
+  createCard(@Body('user') createCardDto: CreateCardDto) {
+    return this.purchaseService.createCard(createCardDto);
   }
 }
