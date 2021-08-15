@@ -1,6 +1,6 @@
 
 import { Injectable } from '@nestjs/common';
-import { CreateWalletDto } from './dto/create-wallet.dto';
+import { CreateWalletDto, GenerateAddressDto } from './dto/create-wallet.dto';
 
 @Injectable()
 export class WalletService {
@@ -9,7 +9,15 @@ export class WalletService {
     // TODO :  Call sandbox circle
   }
 
-  getWalletDetails(): void {
+  getWalletDetails(id: string): void {
     // TODO :  Call sandbox circle
+  }
+
+  generateAddress(generateAddtessDto: GenerateAddressDto) {
+
+  }
+
+  assignWalletToUser() {
+    // TODO: Create after creating user Module
   }
 }
