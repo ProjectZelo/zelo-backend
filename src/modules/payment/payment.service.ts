@@ -3,7 +3,7 @@ import { CreateCardDto } from './dto/create-card.dto';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class PurchaseService {
+export class PaymentService {
 
   createCard(cardDetails: CreateCardDto): void {
 

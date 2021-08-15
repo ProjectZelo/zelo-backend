@@ -1,11 +1,11 @@
 import { CreatePaymentDto } from './dto/create-payment.dto';
 import { CreateCardDto } from './dto/create-card.dto';
-import { PurchaseService } from './purchase.service';
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { PaymentService } from './payment.service';
 
 @Controller()
-export class PurchaseController {
-  constructor(private readonly purchaseService: PurchaseService) {
+export class PaymentController {
+  constructor(private readonly purchaseService: PaymentService) {
 
   }
 
