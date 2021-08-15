@@ -44,5 +44,14 @@ enum SourceType {
     'ach'
 }
 
+enum TxnType {
+    'payment',
+    'payout'
+}
+
+enum TxnStatus {
+    'pending'
+}
+
 
 

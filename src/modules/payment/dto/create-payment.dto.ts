@@ -33,3 +33,16 @@ export class CreatePaymentDto {
     @IsNotEmpty()
     readonly source: SourceType
 }
+
+
+export interface CreatePaymentTxnDto {
+    circleTxnId: string;
+    txnType: TxnType;
+    merchantId: string;
+    merchantWalletId: string;
+    amount: string;
+    currency: Currency;
+    source: Source;
+    description: string;
+    status: TxnStatus;
+}

@@ -1,4 +1,4 @@
-import { CreatePaymentDto } from './dto/create-payment.dto';
+import { CreatePaymentDto, CreatePaymentTxnDto } from './dto/create-payment.dto';
 import { CreateCardDto } from './dto/create-card.dto';
 import { Injectable } from '@nestjs/common';
 
@@ -12,6 +12,12 @@ export class PaymentService {
   }
 
   createPayment(paymentDetails: CreatePaymentDto): void {
+
+    // TODO :  Call sandbox circle to create payment
+
+  }
+
+  createPaymentTxn(paymentTxnDetails: CreatePaymentTxnDto): void {
 
     // TODO :  Call sandbox circle to create payment
 
