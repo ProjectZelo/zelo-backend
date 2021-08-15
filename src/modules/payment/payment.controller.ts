@@ -19,6 +19,11 @@ export class PaymentController {
     return this.purchaseService.createPayment(createPaymentDto);
   }
 
+  /**
+   * The below end point may not be called from outside. Payments txns will be recorded as payments are done
+   * @param createPaymentTxn 
+   * @returns 
+   */
   @Post('payment')
   recordPaymentTxn(@Body('payment') createPaymentTxn: CreatePaymentTxnDto) {
     return this.purchaseService.createPaymentTxn(createPaymentTxn);

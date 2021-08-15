@@ -14,6 +14,7 @@ export class PaymentService {
   createPayment(paymentDetails: CreatePaymentDto): void {
 
     // TODO :  Call sandbox circle to create payment
+    // TODO: call create payment txns after getting response from circle
 
   }
 
