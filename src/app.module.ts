@@ -4,9 +4,17 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { WalletModule } from './modules/wallet/wallet.module';
 import { PaymentModule } from './modules/payment/payment.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { configService } from 'config/config.service';
 
 @Module({
-  imports: [PaymentModule, WalletModule, UserModule],
+  imports: [
+    PaymentModule,
+    WalletModule,
+    UserModule,
+    TypeOrmModule.forRoot(configService.getTypeOrmConfig())
+
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
