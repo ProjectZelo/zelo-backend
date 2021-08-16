@@ -9,7 +9,6 @@ class ConfigService {
     constructor(private env: { [k: string]: string | undefined }) { }
 
     private getValue(key: string, throwOnMissing = true): string {
-        console.log(this.env, key);
         const value = this.env[key];
         if (!value && throwOnMissing) {
             throw new Error(`config error - missing env.${key}`);
@@ -41,8 +40,8 @@ class ConfigService {
             username: this.getValue('POSTGRES_USER'),
             password: this.getValue('POSTGRES_PASSWORD'),
             database: this.getValue('POSTGRES_DATABASE'),
-
-            entities: ['**/*.entity{.ts,.js}'],
+            ssl: this.isProduction(),
+            entities: ['dist/**/*.entity.js'], // TODO: Confirm is this is correct
 
             migrationsTableName: 'migration',
 
@@ -50,9 +49,7 @@ class ConfigService {
 
             cli: {
                 migrationsDir: 'src/migration',
-            },
-
-            ssl: this.isProduction(),
+            }
         };
     }
 

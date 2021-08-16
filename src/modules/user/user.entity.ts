@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert, JoinTable, ManyToMany, OneToMany } from 'typeorm';
 import { IsEmail } from 'class-validator';
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity('user')
 export class UserEntity {
