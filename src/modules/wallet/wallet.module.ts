@@ -1,3 +1,4 @@
+import { WalletEntity } from './wallet.entity';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -7,7 +8,9 @@ import { WalletService } from './wallet.service';
 
 @Module({
     imports: [
-        SharedModule
+        SharedModule,
+        TypeOrmModule.forFeature([WalletEntity]),
+
     ],
     controllers: [WalletController],
     providers: [WalletService]

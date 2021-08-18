@@ -1,5 +1,5 @@
-export const endpoints = {
-    wallet: '',
-    user: '',
-    payment: ''
+export const ENDPOINTS = {
+    wallet: '/wallets',
+    user: '/user',
+    payment: '/payment'
 }

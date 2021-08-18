@@ -1,6 +1,6 @@
 import { configService } from 'config/config.service';
 import { HttpModule, HttpService } from '@nestjs/axios';
-import { Logger, Module, OnModuleInit } from '@nestjs/common';
+import { Logger, Module, OnModuleInit, Body } from '@nestjs/common';
 
 
 @Module({

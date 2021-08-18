@@ -10,3 +10,17 @@ export enum BlockchainNetwork {
     'SOL',
     'BTC'
 }
+
+export interface WalletResponse {
+    data: WalletInfo
+}
+
+export interface WalletInfo {
+
+    walletId: string,
+    entityId: string,
+    type: string,
+    description: string
+    balances: any // model this correctly later
+
+}
