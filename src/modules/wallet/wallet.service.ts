@@ -10,8 +10,9 @@ export class WalletService {
 
   }
 
-  createWallet(createWalletDto: CreateWalletDto): void {
+  async createWallet(createWalletDto: CreateWalletDto): Promise<void> {
     // TODO :  Call sandbox circle
+    const response = await this.httpService.get('https://api.github.com/users/paztek').toPromise();
 
 
   }

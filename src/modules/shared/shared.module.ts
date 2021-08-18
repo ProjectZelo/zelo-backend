@@ -1,19 +1,15 @@
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { Logger, Module, OnModuleInit } from '@nestjs/common';
 
-
-/**
- * Check if this interceptor is working
- */
 @Module({
     imports: [
         HttpModule
     ],
     exports: [
         HttpModule
-    ],
+    ]
 })
-export class HttpInterceptorModule implements OnModuleInit {
+export class SharedModule implements OnModuleInit {
 
     constructor(
         private readonly httpService: HttpService,
@@ -21,16 +17,20 @@ export class HttpInterceptorModule implements OnModuleInit {
 
     public onModuleInit(): any {
         const logger = new Logger('Axios');
-
         // Add request interceptor and response interceptor to log request infos
         const axios = this.httpService.axiosRef;
-        axios.interceptors.request.use(function (config) {
+
+
+        this.httpService.axiosRef.interceptors.request.use(function (config) {
+            console.log('in the interceptor....')
             // Please don't tell my Typescript compiler...
             config['metadata'] = { ...config['metadata'], startDate: new Date() };
             return config;
         });
         axios.interceptors.response.use(
             (response) => {
+                console.log('in the interceptor....')
+
                 const { config } = response;
                 config['metadata'] = { ...config['metadata'], endDate: new Date() };
                 const duration = config['metadata'].endDate.getTime() - config['metadata'].startDate.getTime();

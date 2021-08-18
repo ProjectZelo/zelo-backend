@@ -78,7 +78,8 @@ const configService = new ConfigService(process.env)
         'POSTGRES_USER',
         'POSTGRES_PASSWORD',
         'POSTGRES_DATABASE',
-        'CIRCLE_URL'
+        'CIRCLE_URL_DEV',
+        'CIRCLE_URL_PROD'
     ]);
 
 export { configService };

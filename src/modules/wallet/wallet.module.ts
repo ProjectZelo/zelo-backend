@@ -1,12 +1,20 @@
-import { HttpModule } from '@nestjs/axios';
+import { HttpModule, HttpService } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { SharedModule } from '../shared/shared.module';
+import { WalletController } from './wallet.controller';
+import { WalletService } from './wallet.service';
 
 @Module({
     imports: [
-        HttpModule.register({
-            timeout: 5000, //TODO: revisit these number
-            maxRedirects: 5
-        }),
-    ]
+        SharedModule
+    ],
+    controllers: [WalletController],
+    providers: [WalletService]
 })
-export class WalletModule { }
+export class WalletModule {
+    constructor(
+        private readonly httpService: HttpService,
+    ) { }
+
+}
