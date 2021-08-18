@@ -53,7 +53,7 @@ class ConfigService {
         };
     }
 
-    public getSandoxUrl(): string {
+    public getCirleDomainUrl(): string {
         if (this.isProduction()) {
             return this.getValue('CIRCLE_URL_PROD');
         } else {
@@ -69,6 +69,10 @@ class ConfigService {
         return this.getValue('CIRCLE_TIMEOUT') || '5000';
     }
 
+    public getCircleBearerToken() {
+        return this.getValue('CIRCLE_BEARER_TOKEN');
+    }
+
 }
 
 const configService = new ConfigService(process.env)
@@ -79,7 +83,8 @@ const configService = new ConfigService(process.env)
         'POSTGRES_PASSWORD',
         'POSTGRES_DATABASE',
         'CIRCLE_URL_DEV',
-        'CIRCLE_URL_PROD'
+        'CIRCLE_URL_PROD',
+        'CIRCLE_BEARER_TOKEN'
     ]);
 
 export { configService };
