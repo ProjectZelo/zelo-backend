@@ -23,4 +23,25 @@ export class UserEntity {
     @Column({ default: '' })
     image: string;
 
+    @Column({ default: '' })
+    addressLine1: string;
+
+    @Column({ default: '' })
+    addressLine2: string;
+
+    @Column({ default: '' })
+    province: string;
+
+    @Column({ default: '' })
+    state: string;
+
+    @Column({ default: '' })
+    city: string;
+
+    @Column({ default: '' })
+    postalCode: string;
+
+    @Column({ default: '' })
+    country: string;
+
 }
