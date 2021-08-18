@@ -53,6 +53,22 @@ class ConfigService {
         };
     }
 
+    public getSandoxUrl(): string {
+        if (this.isProduction()) {
+            return this.getValue('CIRCLE_URL_PROD');
+        } else {
+            return this.getValue('CIRCLE_URL_DEV');
+        }
+    }
+
+    public getMaxRedirects() {
+        return this.getValue('MAX_REDIRECTS') || '5';
+    }
+
+    public getTimeout() {
+        return this.getValue('CIRCLE_TIMEOUT') || '5000';
+    }
+
 }
 
 const configService = new ConfigService(process.env)
@@ -61,7 +77,8 @@ const configService = new ConfigService(process.env)
         'POSTGRES_PORT',
         'POSTGRES_USER',
         'POSTGRES_PASSWORD',
-        'POSTGRES_DATABASE'
+        'POSTGRES_DATABASE',
+        'CIRCLE_URL'
     ]);
 
 export { configService };

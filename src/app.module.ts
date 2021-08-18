@@ -1,3 +1,4 @@
+import { HttpInterceptorModule } from './modules/http-interceptor/http-interceptor.module';
 import { UserModule } from './modules/user/user.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -12,6 +13,7 @@ import { configService } from 'config/config.service';
     PaymentModule,
     WalletModule,
     UserModule,
+    HttpInterceptorModule,
     TypeOrmModule.forRoot(configService.getTypeOrmConfig())
 
   ],
