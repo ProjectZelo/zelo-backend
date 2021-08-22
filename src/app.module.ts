@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { configService } from 'config/config.service';
 import { HttpService } from '@nestjs/axios';
 import { SharedModule } from './modules/shared/shared.module';
+import { CardModule } from './modules/card/card.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { SharedModule } from './modules/shared/shared.module';
     WalletModule,
     UserModule,
     SharedModule,
+    CardModule,
     TypeOrmModule.forRoot(configService.getTypeOrmConfig())
 
   ],

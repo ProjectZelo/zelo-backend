@@ -31,5 +31,8 @@ export class CreateCardDto {
     @IsNotEmpty()
     readonly keyId: string;
 
+    @IsNotEmpty()
+    readonly userId: number;
+
 
 }
