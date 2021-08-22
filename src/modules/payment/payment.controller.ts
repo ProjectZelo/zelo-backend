@@ -1,5 +1,4 @@
 import { CreatePaymentDto, CreatePaymentTxnDto } from './dto/create-payment.dto';
-import { CreateCardDto } from './dto/create-card.dto';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { PaymentService } from './payment.service';
 
@@ -9,13 +8,8 @@ export class PaymentController {
 
   }
 
-  @Post('card')
-  createCard(@Body('payment') createCardDto: CreateCardDto) {
-    return this.purchaseService.createCard(createCardDto);
-  }
-
   @Post('payment')
-  createPayment(@Body('payment') createPaymentDto: CreatePaymentDto) {
+  createPayment(@Body() createPaymentDto: CreatePaymentDto) {
     return this.purchaseService.createPayment(createPaymentDto);
   }
 
