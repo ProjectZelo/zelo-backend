@@ -7,11 +7,15 @@ import { PaymentEntity } from './payment.entity';
 import { configService } from 'config/config.service';
 import { ENDPOINTS } from '../shared/service-end-points';
 import { map } from 'rxjs';
+import { WalletEntity } from '../wallet/wallet.entity';
+import { WalletService } from '../wallet/wallet.service';
 
 @Injectable()
 export class PaymentService {
 
   constructor(@InjectRepository(PaymentEntity) readonly paymentRepository: Repository<PaymentEntity>,
+    @InjectRepository(WalletEntity) readonly walletRepository: Repository<WalletEntity>,
+    private readonly walletService: WalletService,
     private httpService: HttpService) {
 
   }
@@ -39,6 +43,7 @@ export class PaymentService {
         this.paymentRepository.save(paymentEntity);
 
         //TODO: after saving payment txn details we should map user to the balance
+        this
       },
       error: (e) => console.error(e),
       complete: () => console.info('create card complete')

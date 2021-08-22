@@ -1,6 +1,6 @@
+import { CryptoCurrency, TXN_STATUS } from './wallet.interface';
 import { UserEntity } from './../user/user.entity';
-import { IsEmail } from 'class-validator';
-import { Entity, PrimaryGeneratedColumn, Column, TableExclusion, TableColumn, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, TableExclusion } from 'typeorm';
 
 @Entity('wallet')
 export class WalletEntity {
@@ -8,13 +8,21 @@ export class WalletEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @OneToOne(type => UserEntity, user => user.id)
-    @JoinColumn({ name: "userId" })  // This matches @PrimaryColumn name
-    userId: string;
-
     @Column()
     circleWalletId: string;
 
+    @Column({ default: CryptoCurrency.USDC })
+    currency: CryptoCurrency;
+
+    @Column({ default: 0 })
+    balance: number;
+
+    @Column({ default: TXN_STATUS.initial })
+    status: TXN_STATUS;
+
+    @OneToOne(type => UserEntity, user => user.id)
+    @JoinColumn({ name: "userId" })  // This matches @PrimaryColumn name
+    userId: string;
     // add balances here
 
 }

@@ -33,6 +33,7 @@ enum TXN_TYPE {
 }
 
 enum TXN_STATUS {
+    initial = 'initial',
     pending = 'pending',
     confirmed = 'confirmed'
 }

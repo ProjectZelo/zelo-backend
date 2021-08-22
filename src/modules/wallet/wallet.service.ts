@@ -3,12 +3,12 @@ import { ENDPOINTS } from './../shared/service-end-points';
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { configService } from 'config/config.service';
-import { CreateWalletDto, GenerateAddressDto } from './dto/create-wallet.dto';
+import { CreateWalletDto, GenerateAddressDto, UpdateWalletDto } from './dto/wallet.dto';
 import { WalletResponse } from './wallet.interface';
 import { WalletEntity } from './wallet.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class WalletService {
@@ -33,6 +33,16 @@ export class WalletService {
       error: (e) => console.error(e),
       complete: () => console.info('complete')
     })
+  }
+
+  async updateWallet(updateWalletDto: UpdateWalletDto): Promise<WalletEntity> {
+    const walletRow = await this.walletRepository.findOneOrFail(updateWalletDto.id);
+    if (!walletRow.id) {
+      console.error("Wallet doesn't exist");
+    }
+    const updatedWalletEntity = new WalletEntity();
+    this.walletRepository.update(updateWalletDto.id, updatedWalletEntity);
+    return await this.walletRepository.findOne(updateWalletDto.id);
   }
 
   getWalletDetails(id: string): void {

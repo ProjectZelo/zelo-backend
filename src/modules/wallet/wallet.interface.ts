@@ -1,8 +1,8 @@
 
 export enum CryptoCurrency {
-    'ETH',
-    'USD',
-    'BTC'
+    ETH = 'ETH',
+    USDC = 'USDC',
+    BTC = 'BTC'
 }
 
 export enum BlockchainNetwork {
@@ -23,4 +23,10 @@ export interface WalletInfo {
     description: string
     balances: any // model this correctly later
 
+}
+
+export enum TXN_STATUS {
+    initial = 'initial',
+    pending = 'pending',
+    confirmed = 'confirmed'
 }

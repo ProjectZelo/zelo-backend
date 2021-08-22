@@ -5,6 +5,13 @@ export interface CreateWalletDto {
     idempotencyKey: string,
     description: string
 }
+export interface UpdateWalletDto {
+    id: string,
+    userId: string,
+    balance: number;
+    status: TXN_STATUS;
+    currency: CryptoCurrency;
+}
 
 export interface GenerateAddressDto {
     walletId: string,
