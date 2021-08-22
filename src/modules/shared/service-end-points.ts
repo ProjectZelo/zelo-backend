@@ -1,6 +1,6 @@
 export const ENDPOINTS = {
     wallet: '/wallets',
     user: '/user',
-    payment: '/payment',
+    payments: '/payments',
     cards: '/cards'
 }

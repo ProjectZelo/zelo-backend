@@ -22,6 +22,8 @@ export class CreatePaymentDto {
     @IsNotEmpty()
     readonly verification: Verification;
 
+    readonly description: string;
+
     /**
      * PGP encrypted json string. The object format given here needs to be stringified and PGP 
      * encrypted before it is sent to the server, so encryptedData will end up as a string, 
@@ -31,18 +33,21 @@ export class CreatePaymentDto {
     readonly encryptedData: string
 
     @IsNotEmpty()
-    readonly source: SourceType
+    readonly source: Source
+
+    @IsNotEmpty()
+    readonly userId: number;
 }
 
 
 export interface CreatePaymentTxnDto {
     circleTxnId: string;
-    txnType: TxnType;
+    txnType: TXN_TYPE;
     merchantId: string;
     merchantWalletId: string;
     amount: string;
     currency: Currency;
     source: Source;
     description: string;
-    status: TxnStatus;
+    status: TXN_STATUS;
 }

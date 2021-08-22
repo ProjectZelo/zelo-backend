@@ -27,13 +27,29 @@ enum SourceType {
     'ach'
 }
 
-enum TxnType {
+enum TXN_TYPE {
     'payment',
     'payout'
 }
 
-enum TxnStatus {
-    'pending'
+enum TXN_STATUS {
+    pending = 'pending',
+    confirmed = 'confirmed'
+}
+
+interface CreatePaymentResponse {
+    amount: Amount,
+    createDate: string,
+    updateDate: string,
+    description: "safsdf"
+    id: string,
+    merchantId: string
+    merchantWalletId: string,
+    metadata: MetaData,
+    source: Source,
+    status: TXN_STATUS
+    type: string
+
 }
 
 
