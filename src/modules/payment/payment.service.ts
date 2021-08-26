@@ -1,3 +1,4 @@
+import { WalletEntity } from './../wallet/wallet.entity';
 import { CreatePaymentDto, CreatePaymentTxnDto } from './dto/create-payment.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -7,7 +8,6 @@ import { PaymentEntity } from './payment.entity';
 import { configService } from 'config/config.service';
 import { ENDPOINTS } from '../shared/service-end-points';
 import { map } from 'rxjs';
-import { WalletEntity } from '../wallet/wallet.entity';
 import { WalletService } from '../wallet/wallet.service';
 
 @Injectable()
@@ -29,7 +29,7 @@ export class PaymentService {
     const createCardUrl = configService.getCirleDomainUrl() + ENDPOINTS.payments;
     const response = await this.httpService.post(createCardUrl, paymentDetails);
     response.pipe(map(x => x.data.data)).subscribe({
-      next: (v: CreatePaymentResponse) => {
+      next: async (v: CreatePaymentResponse) => {
 
         const paymentEntity = new PaymentEntity();
         paymentEntity.amount = Number(v.amount?.amount);
@@ -42,8 +42,14 @@ export class PaymentService {
 
         this.paymentRepository.save(paymentEntity);
 
-        //TODO: after saving payment txn details we should map user to the balance
-        this
+        this.walletService.getUserWallet(paymentDetails.userId).then((wallet: WalletEntity) => {
+          let walletId = wallet.id;
+          this.walletRepository.createQueryBuilder()
+            .update(WalletEntity)
+            .set({ balance: Number(v.amount.amount) })
+            .where("id = :id", { id: walletId })
+            .execute();
+        })
       },
       error: (e) => console.error(e),
       complete: () => console.info('create card complete')

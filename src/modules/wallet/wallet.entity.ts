@@ -22,7 +22,6 @@ export class WalletEntity {
 
     @OneToOne(type => UserEntity, user => user.id)
     @JoinColumn({ name: "userId" })  // This matches @PrimaryColumn name
-    userId: string;
-    // add balances here
+    userId: number;
 
 }

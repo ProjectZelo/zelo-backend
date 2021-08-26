@@ -1,7 +1,7 @@
 import { BlockchainNetwork, CryptoCurrency } from "../wallet.interface";
 
 export interface CreateWalletDto {
-    userId: string,
+    userId: number,
     idempotencyKey: string,
     description: string
 }

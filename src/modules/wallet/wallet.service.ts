@@ -23,7 +23,7 @@ export class WalletService {
     // TODO :  Call sandbox circle
     const createWalletUrl = configService.getCirleDomainUrl() + ENDPOINTS.wallet;
     const response = await this.httpService.post(createWalletUrl, createWalletDto);
-    response.pipe(map(x => x.data)).subscribe({
+    response.pipe(map(x => x.data?.data)).subscribe({
       next: (v: WalletResponse) => {
         const walletEntity = new WalletEntity();
         walletEntity.circleWalletId = v.data.walletId;
@@ -43,6 +43,12 @@ export class WalletService {
     const updatedWalletEntity = new WalletEntity();
     this.walletRepository.update(updateWalletDto.id, updatedWalletEntity);
     return await this.walletRepository.findOne(updateWalletDto.id);
+  }
+
+  getUserWallet(userId: number): Promise<WalletEntity> {
+    return this.walletRepository.createQueryBuilder("wallet")
+      .where("wallet.userId = :id", { id: userId })
+      .getOne();
   }
 
   getWalletDetails(id: string): void {
