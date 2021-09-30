@@ -1,4 +1,3 @@
-import { CryptoCurrency, TXN_STATUS } from './vendor.interface';
 import { UserEntity } from '../user/user.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, TableExclusion } from 'typeorm';
 
