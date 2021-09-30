@@ -1,4 +1,4 @@
-import { VendorEntity } from './vendor.entity';
+import { VendorTokenEntity } from './vendorToken.entity';
 import { HttpModule, HttpService } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -9,7 +9,7 @@ import { VendorService } from './vendor.service';
 @Module({
     imports: [
         SharedModule,
-        TypeOrmModule.forFeature([VendorEntity]),
+        TypeOrmModule.forFeature([VendorTokenEntity]),
 
     ],
     controllers: [VendorController],

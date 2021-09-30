@@ -1,8 +1,8 @@
 import { UserEntity } from '../user/user.entity';
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, TableExclusion } from 'typeorm';
 
-@Entity('vendor')
-export class VendorEntity {
+@Entity('vendor_token')
+export class VendorTokenEntity {
 
     @PrimaryGeneratedColumn()
     id: number;

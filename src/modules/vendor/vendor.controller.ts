@@ -3,14 +3,15 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateVendorToken } from './dto/vendor.dto';
 import { VendorService } from './vendor.service';
 
-@Controller('vendor/token')
+@Controller('vendor')
 export class VendorController {
   constructor(private readonly vendorService: VendorService) {
 
   }
 
-  @Post()
+  @Post('/token')
   createVendorToken(@Body() createVendorToken: CreateVendorToken) {
+    console.log(createVendorToken)
     this.vendorService.createVendorToken(createVendorToken);
   }
 
