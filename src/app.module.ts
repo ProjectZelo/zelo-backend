@@ -1,3 +1,4 @@
+import { VendorModule } from './modules/vendor/vendor.module';
 import { UserModule } from './modules/user/user.module';
 import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -14,6 +15,7 @@ import { CardModule } from './modules/card/card.module';
   imports: [
     PaymentModule,
     WalletModule,
+    VendorModule,
     UserModule,
     SharedModule,
     CardModule,
