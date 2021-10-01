@@ -26,6 +26,14 @@ export class VendorService {
     this.vendorDtlsRepository.save(addVendor);
   }
 
+  getPartnerToken(vendorName: string) {
+    return this.vendorDtlsRepository.find({
+      where: [
+        { name: vendorName }
+      ]
+    });
+  }
+
   getVendorToken(vendor: string, userId: number) {
     this.vendorTokenRepository.find({
       where: [

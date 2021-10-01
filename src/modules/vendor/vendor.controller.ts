@@ -1,5 +1,5 @@
 
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
 import { AddVendor, CreateVendorToken } from './dto/vendor.dto';
 import { VendorService } from './vendor.service';
 
@@ -24,6 +24,12 @@ export class VendorController {
   @Get()
   getWalletDetails(@Param() params) {
     this.vendorService.getVendorToken(params.vendor, params.userId)
+  }
+
+  @Get('/token')
+  getPartnerToken(@Query() params) {
+    console.log(params);
+    return this.vendorService.getPartnerToken(params.vendorName);
   }
 }
 

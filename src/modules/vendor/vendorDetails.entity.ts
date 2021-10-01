@@ -7,7 +7,7 @@ export class VendorDetailsEntity {
     id: number;
 
     @Column()
-    vendorName: string;
+    name: string;
 
     @Column()
     partnerToken: string;

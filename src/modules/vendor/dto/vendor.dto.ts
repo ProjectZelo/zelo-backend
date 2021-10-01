@@ -5,6 +5,6 @@ export interface CreateVendorToken {
     vendorToken: string
 }
 export interface AddVendor {
-    vendorName: string,
+    name: string,
     partnerToken: string
 }
