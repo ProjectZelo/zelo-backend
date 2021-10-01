@@ -1,6 +1,6 @@
 
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { CreateVendorToken } from './dto/vendor.dto';
+import { AddVendor, CreateVendorToken } from './dto/vendor.dto';
 import { VendorService } from './vendor.service';
 
 @Controller('vendor')
@@ -13,6 +13,12 @@ export class VendorController {
   createVendorToken(@Body() createVendorToken: CreateVendorToken) {
     console.log(createVendorToken)
     this.vendorService.createVendorToken(createVendorToken);
+  }
+
+  @Post()
+  addVendor(@Body() addVendor: AddVendor) {
+    console.log(addVendor)
+    this.vendorService.addVendor(addVendor);
   }
 
   @Get()

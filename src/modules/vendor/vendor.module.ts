@@ -5,11 +5,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SharedModule } from '../shared/shared.module';
 import { VendorController } from './vendor.controller';
 import { VendorService } from './vendor.service';
+import { VendorDetailsEntity } from './vendorDetails.entity';
 
 @Module({
     imports: [
         SharedModule,
-        TypeOrmModule.forFeature([VendorTokenEntity]),
+        TypeOrmModule.forFeature([VendorTokenEntity, VendorDetailsEntity]),
 
     ],
     controllers: [VendorController],
